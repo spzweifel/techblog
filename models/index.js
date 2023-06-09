@@ -3,12 +3,12 @@ const Post = require('./Post');
 const Comment = require('./Comment');
 
 User.hasMany(Post, {
-    foreignKey: '',
+    foreignKey: 'user_id',
     onDelete: 'CASCADE'
 });
 
 Post.hasMany(Comment, {
-    foreignKey: '',
+    foreignKey: 'user_id',
     onDelete: 'CASCADE'
 });
 

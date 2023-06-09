@@ -4,7 +4,7 @@ const Post = require('../models/Post');
 const Comment = require('../models/Comment');
 const withAuth = require('../utils/auth');
 
-router.post('/', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const newUser = await User.create(req.body);
 
@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.post('/login', async (req, res) => {
+router.get('/login', async (req, res) => {
     try {
         const user = await User.findOne({ where: { username: req.body.username } });
 
@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
